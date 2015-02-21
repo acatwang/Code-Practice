@@ -1,0 +1,52 @@
+"""
+'.' Matches any single character.
+'*' Matches zero or more of the preceding element.
+The matching should cover the entire input string (not partial).
+====
+revise to increase performance
+
+"""
+cache={}
+def isMatch(s,p):
+	if (s,p) in cache:
+		return cache[(s,p)]
+	if "*" not in p:
+		check = True
+		if len(s) == len(p):
+			for i,char in enumerate(p):
+				check = char==s[i] or char=="."
+		else:
+			return False
+		return check
+
+	if p[-1]=="*":
+		# match zero
+		if isMatch(s,p[:-2]):
+			cache[(s,p)] = True
+			return True
+		# match 1 or more
+		if isMatch(s,p[:-1]+p[-2]):
+			cache[(s,p)] = True
+			return True
+
+		return False
+	else:
+		if s[-1]==p[-1] or p[-1]==".":
+			return isMatch(s[:-1],p[:-1])
+			
+# print isMatch("aa",".")
+# print isMatch("aa","aa")
+# print isMatch("aaa","aa")
+# print isMatch("aa", "a*")
+# print isMatch("aa", ".*")
+# print isMatch("aab", "c*aab")
+# # print isMatch("aaa", "ab*ac*a")
+# # print isMatch("a", ".*..a*")
+# # print isMatch("", "..ac")
+# # print isMatch("aaca", "ab*a*c*a")
+# # print isMatch("ab", ".*c")
+# print isMatch("aaa", ".*")
+# print isMatch("aaa", ".a")
+# print isMatch("a", "ab*a")
+#print isMatch("aasdfasdfasdfasdfas", "aasdf.*asdf.*asdf.*asdf.*s")
+#print isMatch("caacacabbbaaccba", "b*b..*b*.*c*.*a*")
