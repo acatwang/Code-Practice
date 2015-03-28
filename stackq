@@ -1,0 +1,6 @@
+"""
+Use python list to make stack and queue
+===============
+Stack: last in first out (push/pop)
+Queue: first in first out (enqueue/dequeue)
+"""
