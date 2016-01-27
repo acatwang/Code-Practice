@@ -1,0 +1,8 @@
+"""
+Min coins
+Given a list of coins type, target sum, return the possible combinations
+Example:
+minCoin([5,4,3],9) -> [5,4]
+"""
+
+

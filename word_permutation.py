@@ -6,6 +6,7 @@ input - dog
 output - dog, gdo, ogd,god,odg,dgo
 """
 def permute(word,comb="",capital=False):
+	#print 'word', word, 'comb:',comb
 	word=word.lower()
 	n = len(word)
 	if n ==0:
@@ -18,5 +19,5 @@ def permute(word,comb="",capital=False):
 			permute( word[:i]+word[(i+1):],comb+(s.upper()))
 
 
-permute ('Ab')
-#permute ('dog')
+#permute ('Ab')
+permute ('dog')
